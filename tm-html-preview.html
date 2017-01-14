@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`tm-html-preview`
+Polymer component for previewing HTML pages.
+
+@demo demo/index.html 
+-->
+
+<dom-module id="tm-html-preview">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'tm-html-preview',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'tm-html-preview',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
