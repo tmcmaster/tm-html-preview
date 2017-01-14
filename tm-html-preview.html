@@ -1,20 +1,27 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
 
 <!--
 `tm-html-preview`
 Polymer component for previewing HTML pages.
 
-@demo demo/index.html 
+@demo demo/index.html
 -->
 
 <dom-module id="tm-html-preview">
   <template>
     <style>
       :host {
-        display: block;
+        display: inline-block;
+        border:solid green 1px;
+        box-sizing: border-box;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <iframe id="iframe" frameborder="0"></iframe>
   </template>
 
   <script>
@@ -28,6 +35,23 @@ Polymer component for previewing HTML pages.
           value: 'tm-html-preview',
         },
       },
+
+      ready: function() {
+        this.setCode('<html><head><style>h2 {color:red;text-align:center;}</style></head><body><h2>This heading should be red and centered</h2></body></html>');
+      },
+
+      setCode: function(code) {
+        const iframe = this.$.iframe;
+        const iframeDoc = iframe.contentWindow ?
+                          iframe.contentWindow :
+                          iframe.contentDocument.document ?
+                            iframe.contentDocument.document :
+                            iframe.contentDocument;
+
+        iframeDoc.document.open();
+        iframeDoc.document.write(code);
+        iframeDoc.document.close();
+      }
 
     });
   </script>
