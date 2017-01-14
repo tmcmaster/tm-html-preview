@@ -16,12 +16,22 @@ Polymer component for previewing HTML pages.
         box-sizing: border-box;
       }
       iframe {
+        display:inline-block;
         width: 100%;
         height: 100%;
 
       }
+      div {
+        display:inline-block;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border:solid red 2px;
+      }
     </style>
-    <iframe id="iframe" frameborder="0"></iframe>
+    <div>
+      <iframe id="iframe" frameborder="0"></iframe>
+    </div>
   </template>
 
   <script>
